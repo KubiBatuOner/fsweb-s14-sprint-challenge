@@ -4,7 +4,7 @@ const db = require("../../data/dbConfig");
 
 async function getAll() {
   const projects = await db("projects");
-  const project = project.map((p) => {
+  const project = projects.map((p) => {
     return {
       ...p,
       project_completed: p.project_completed ? true : false,
@@ -12,7 +12,6 @@ async function getAll() {
   });
   return project;
 }
-
 async function insert(project) {
   const [project_id] = await db("projects").insert(project);
   const newProject = await db("projects")
@@ -24,7 +23,6 @@ async function insert(project) {
   };
   return projects;
 }
-
 module.exports = {
   getAll,
   insert,

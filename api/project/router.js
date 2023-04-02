@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    if (!req.body.project.name) {
+    if (!req.body.project_name) {
       res.status(400).json({ message: "eksik alan var" });
     } else {
       const newProject = await ProjectsModel.insert(req.body);
